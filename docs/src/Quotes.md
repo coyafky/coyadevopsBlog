@@ -5,7 +5,7 @@ layout: page
 ---
 
 <script setup>
-import Quotes from '../.vitepress/views/Friends.vue'
+import Quotes from '../.vitepress/views/Quotes.vue'
 </script>
 
 <Quotes/>

@@ -210,14 +210,14 @@ updateTime: "2023-10-25 00:21"
 
 这是本项目在 Vitepress 基础上新增的页面，用于展示你的社交网络与友情链接。
 
-该部分配置文件位于 `/docs/.vitepress/userConfig/friendsInfo.ts`
+该部分配置文件位于 `/docs/.vitepress/userConfig/quotesInfo.ts`
 
 以下是字段说明：
 
 ```js
-  avatar: string;   // 头像链接
-  name: string;     // 好友 id
-  link: string;     // 好友的博客链接
+  content: string;  // 格言内容
+  author: string;   // 作者/来源
+  category: string; // 分类
 
   // (可选)关于好友的简介
   title?: string;

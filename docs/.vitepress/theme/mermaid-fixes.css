@@ -1,0 +1,24 @@
+/* Hide Mermaid syntax error messages */
+.mermaid svg[aria-roledescription="error-icon"],
+.mermaid text:has(~ svg[aria-roledescription="error-icon"]) {
+  display: none !important;
+}
+
+/* Hide the error text containers */
+.mermaid g[class="error-text"] {
+  display: none !important;
+}
+
+/* Hide the error container elements */
+.mermaid .error-container,
+.mermaid .error-icon,
+.mermaid .error-text,
+.mermaid g:has(text:contains("Syntax error in text")) {
+  display: none !important;
+}
+
+/* Add additional styles to target specific error messages if needed */
+.mermaid text:contains("Syntax error in text"),
+.mermaid text:contains("mermaid version") {
+  display: none !important;
+}

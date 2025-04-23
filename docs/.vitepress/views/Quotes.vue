@@ -7,7 +7,7 @@
     <div class="px-6 md:px-12 lg:px-16">
       <div class="QuotesContent">
         <QuoteCard
-          v-for="(item, index) in friendsInfo"
+          v-for="(item, index) in quotesInfo"
           :key="index"
           v-bind="item"
         ></QuoteCard>
@@ -18,7 +18,7 @@
 
 <script setup>
 import { VPTeamPage, VPTeamPageTitle } from "vitepress/theme";
-import { friendsInfo } from "../userConfig/friendsInfo";
+import { quotesInfo } from "../userConfig/quotesInfo";
 import QuoteCard from "./QuoteCard.vue";
 </script>
 
@@ -27,7 +27,9 @@ import QuoteCard from "./QuoteCard.vue";
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
   max-width: 1152px;
-  gap: 24px;
+  gap: 16px;
+  padding: 0;
+  list-style-type: none;
   margin: 0 auto;
 }
 </style>

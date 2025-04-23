@@ -1,10 +1,20 @@
 import { defineConfig } from "vitepress";
 import { fileURLToPath, URL } from "node:url";
 import { getSidebar } from "./utils/getSidebar";
+import { withMermaid } from "vitepress-plugin-mermaid";
 
-export default defineConfig({
+export default withMermaid(defineConfig({
+  // Mermaid specific configuration
+  mermaid: {
+    // Mermaid options
+    theme: 'default',
+    securityLevel: 'loose',
+    // Additional configuration if needed
+    // Run in browser, not in Node.js environment during build
+    runOnBrowser: true, 
+  },
   // 标签上显示的网站标题
-  title: "Easy VitePress Blog",
+  title: "CoaydevopsLearnBlog",
   titleTemplate: "Blog",
   // 在标签上显示所的 logo
   head: [["link", { rel: "icon", href: "/logo.svg" }]],
@@ -23,16 +33,17 @@ export default defineConfig({
     logo: "/logo.svg",
     // 顶部导航栏
     nav: [
-      { text: "👋 About", link: "/AboutMe.md" },
-      { text: "💭 Blogs", link: "/Notes/index" },
-      { text: "🦄 Projects", link: "Projects.md" },
-      { text: "👫 Friends", link: "Friends.md" },
+      { text: "About", link: "/AboutMe.md" },
+      { text: "Blogs", link: "/Notes/index" },
+      { text: "知识标签", link: "Tags.md" },
+      { text: "Projects", link: "Projects.md" },
+      { text: "智慧与格言", link: "Quotes.md" },
     ],
     // 顶部导航栏左侧的社交平台跳转
-    socialLinks: [{ icon: "github", link: "https://github.com/ZbWeR" }],
+    socialLinks: [{ icon: "github", link: "https://github.com/coyafky" }],
     // 首页底部版权声明
     footer: {
-      copyright: "Copyright © 2023-present zbwer",
+      copyright: "Copyright 2025-present Coya",
     },
     // 【文章页面左侧导航】
     sidebar: {
@@ -48,6 +59,10 @@ export default defineConfig({
   // 数学公式支持
   markdown: {
     math: true,
+    config: (md) => {
+      // Handle special characters in content
+      md.set({ html: true })
+    }
   },
   // !请勿修改
   vite: {
@@ -67,4 +82,4 @@ export default defineConfig({
     },
   },
   lastUpdated: true,
-});
+}));

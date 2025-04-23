@@ -7,54 +7,53 @@ interface Project {
 }
 
 /**
- * TODO: 缺项处理
- * 在此处填写你的项目介绍
+ * 项目链接信息
  */
 export const projectsInfo: Project[] = [
   {
-    banner: "/project-img/gpt-feishu.png",
-    title: "Feishu&ChatGPT",
+    banner: "/project-img/smart-tutor.png",
+    title: "SmartTutorServer",
     description:
-      "将 chatGPT 接入飞书对话机器人，支持上下文对话与人格预设，并使用aircode一键部署",
-    link: "https://github.com/ZbWeR/feishu-chatGPT-plus",
+      "智能辅导平台的服务器端，提供API接口和后端处理逻辑，支持用户认证与在线辅导功能",
+    link: "https://github.com/coyafky/SmartTutorServer",
     tag: "JavaScript",
   },
   {
-    banner: "/project-img/cloudMusic.png",
-    title: "CloudMusic",
-    description: "对移动端网易云音乐的模仿与复现，实现了虚拟列表与无限滚动...",
-    link: "https://github.com/ZbWeR/NeteaseCloudMusic",
+    banner: "/project-img/parent-page.png",
+    title: "SmartTutorParentPage",
+    description: "智能辅导平台家长端，提供家长监督、查看学生学习进度和与导师沟通的界面",
+    link: "https://github.com/coyafky/SmartTutorParentPage",
     tag: "Vue",
   },
   {
-    banner: "/project-img/analyze-tool.png",
-    title: "Npm Analyze-tool",
+    banner: "/project-img/tutor-page.png",
+    title: "SmartTutorTutorPage",
     description:
-      "一款用于可视化分析项目依赖关系的命令行工（第六届字节跳动前端青训大项目三等奖）",
-    link: "https://github.com/jonlyes/packageResolution",
+      "智能辅导平台导师端，提供导师管理学生、发布学习任务和实时辅导的综合界面",
+    link: "https://github.com/coyafky/SmartTutorTutorPage",
+    tag: "Vue",
+  },
+  {
+    banner: "/project-img/admin-page.png",
+    title: "SmartTutorAdminPage",
+    description:
+      "智能辅导平台管理员端，用于系统管理和监控，提供用户管理、数据分析和系统配置功能",
+    link: "https://github.com/coyafky/SmartTutorAdminPage",
     tag: "TypeScript",
   },
   {
-    banner: "/project-img/dora-bot.png",
-    title: "Dora-bot",
+    banner: "/project-img/bus-backend.png",
+    title: "busBackend",
     description:
-      "基于 go-cqhttp 框架开发的QQ聊天机器人，接入 mongodb 存储消息记录以实现虚假的学习功能.",
-    link: "https://github.com/ZbWeR/qqbot-Dora",
-    tag: "Python",
+      "公交车管理系统后端，提供路线规划、车辆调度和实时监控功能的API服务",
+    link: "https://github.com/coyafky/busBackend",
+    tag: "JavaScript",
   },
   {
-    banner: "/project-img/ruleMining.png",
-    title: "Rule Mining",
-    description:
-      "采用 Apriori / Fpgrowth / Eclat 算法对超市商品数据集进行关联规则的挖掘.",
-    link: "https://github.com/ZbWeR/Association-rule-mining",
-    tag: "Python",
-  },
-  {
-    banner: "/project-img/dinosaur.png",
-    title: "Dinosaur-Game",
-    description: "基于 EasyX 开发的一款游戏内容更加丰富的谷歌断网小恐龙游戏.",
-    link: "https://github.com/ZbWeR/Dinosaur-Game",
-    tag: "C++",
+    banner: "/project-img/bb-bus.png",
+    title: "BB_bus",
+    description: "公交车管理系统前端，提供用户友好的界面，支持路线查询、实时公交信息和用户反馈",
+    link: "https://github.com/coyafky/BB_bus",
+    tag: "Vue",
   },
 ];

@@ -4,6 +4,7 @@ import "./tailwind.css";
 import "./var.css";
 import "./article.css";
 import "./print.css";
+import "./mermaid-fixes.css"; // Hide Mermaid syntax errors
 
 import LinkCard from "../components/LinkCard.vue";
 import HText from "../components/HText.vue";
