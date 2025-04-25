@@ -77,11 +77,16 @@ function generate(notesRootPath: string, pagePath: string, prefix = "", depth = 
     }
   }
 
-  sidebarSection.items!.sort((a, b) => {
-    const { time: av } = formatDate(a.updateTime);
-    const { time: bv } = formatDate(b.updateTime);
-    return av - bv;
-  });
+  // 添加空值检查，确保items存在且有内容再排序
+  if (sidebarSection.items && sidebarSection.items.length > 0) {
+    sidebarSection.items.sort((a, b) => {
+      // 确保updateTime存在
+      if (!a.updateTime || !b.updateTime) return 0;
+      const { time: av } = formatDate(a.updateTime);
+      const { time: bv } = formatDate(b.updateTime);
+      return av - bv;
+    });
+  }
 
   return [sidebarSection];
 }
@@ -92,11 +97,30 @@ function generate(notesRootPath: string, pagePath: string, prefix = "", depth = 
  * @param {string} pagePath - 要解析的目录名称
  */
 export function getSidebar(notesRootPath: string, pagePath: string) {
-  const sidebarConfig = generate(notesRootPath, pagePath);
-  return {
-    text: sidebarConfig[0].text,
-    items: sidebarConfig[0].items,
-  };
+  // 确保生成的边栏配置有效
+  try {
+    const sidebarConfig = generate(notesRootPath, pagePath);
+    
+    // 如果生成的配置为空或无效，返回一个默认边栏
+    if (!sidebarConfig || !sidebarConfig[0]) {
+      return {
+        text: pagePath,
+        items: [],
+      };
+    }
+    
+    return {
+      text: sidebarConfig[0].text,
+      items: sidebarConfig[0].items || [],
+    };
+  } catch (error) {
+    console.error(`生成边栏时出错: ${error}`);
+    // 出错时返回默认边栏
+    return {
+      text: pagePath,
+      items: [],
+    };
+  }
 }
 
 /**

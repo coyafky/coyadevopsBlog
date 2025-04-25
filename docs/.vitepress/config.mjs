@@ -47,7 +47,7 @@ export default withMermaid(defineConfig({
     },
     // 【文章页面左侧导航】
     sidebar: {
-      "/Notes/": getSidebar("/docs/src", "/Notes/"),
+      "/Notes/": getSidebar("docs/src", "Notes"),
     },
     // 文章内导航栏标题
     outlineTitle: "导航栏",
