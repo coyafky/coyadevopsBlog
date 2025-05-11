@@ -11,11 +11,19 @@ import HText from "../components/HText.vue";
 import mediumZoom from "medium-zoom";
 import { onMounted, watch, nextTick } from "vue";
 
+// 引入Pinia
+import { createPinia } from 'pinia';
+
 export default {
   extends: DefaultTheme,
-  enhanceApp(ctx) {
-    ctx.app.component("LinkCard", LinkCard);
-    ctx.app.component("HText", HText);
+  enhanceApp({ app }) {
+    // 安装Pinia
+    const pinia = createPinia();
+    app.use(pinia);
+    
+    // 注册组件
+    app.component("LinkCard", LinkCard);
+    app.component("HText", HText);
   },
 
   setup() {

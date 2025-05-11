@@ -1,49 +1,254 @@
 <template>
-  <div class="container">
-    <h1 class="page-title">知识模块标签</h1>
-    <p class="page-desc">按主题分类浏览文章和笔记</p>
+  <div class="max-w-5xl mx-auto px-5 py-8" v-if="isStoreReady">
+    <h1 class="text-4xl font-bold text-center mb-2">技术学习知识标签</h1>
+    <p class="text-xl text-gray-600 text-center mb-12">按知识领域分类浏览学习笔记，记录成长进程</p>
 
-    <div class="tags-container">
-      <div 
-        v-for="tag in tags" 
-        :key="tag.name" 
-        class="tag-group"
-      >
-        <h2 class="tag-title">
-          <span :class="['tag-dot', `tag-${tag.color}`]"></span>
-          {{ tag.name }}
-          <span class="tag-count">({{ tag.posts.length }})</span>
+   
+
+    <!-- 标签统计信息 -->
+    <div class="grid grid-cols-3 gap-4 mb-8">
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+        <div class="text-3xl font-bold mb-2">{{ totalTags }}</div>
+        <div class="text-lg font-semibold text-gray-600">知识分类</div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+        <div class="text-3xl font-bold mb-2">{{ totalArticles }}</div>
+        <div class="text-lg font-semibold text-gray-600">文章总数</div>
+      </div>
+      <div class="bg-gray-50 rounded-lg p-4 border border-gray-200 text-center">
+        <div class="text-3xl font-bold mb-2">{{ latestUpdateTime }}</div>
+        <div class="text-lg font-semibold text-gray-600">最近更新</div>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-200 my-8"></div>
+
+  
+
+  
+
+    <div class="border-t border-gray-200 my-8"></div>
+
+    <!-- 标签内容区 -->
+    <div class="space-y-12">
+      <!-- 测试相关标签内容 -->
+      <div v-for="tag in testingTags" :key="getTagName(tag)" v-if="getTagPostsCount(tag) > 0" class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <h2 :id="getTagName(tag)" class="text-xl font-bold mb-4 flex items-center">
+          <span class="w-3 h-3 rounded-full mr-2" :style="{ backgroundColor: getTagColor(tag) }"></span>
+          {{ getTagName(tag) }}
+          <span class="ml-2 text-sm font-normal text-gray-500">{{ getTagPostsCount(tag) }}篇</span>
         </h2>
-        <ul class="tag-posts">
-          <li v-for="post in tag.posts" :key="post.path" class="tag-post-item">
-            <a :href="post.path" class="tag-post-link">{{ post.title }}</a>
-            <span class="tag-post-date">{{ post.date }}</span>
+        <ul class="space-y-3">
+          <li v-for="post in tag.posts" :key="post.path" class="border-b border-gray-100 pb-2 last:border-0">
+            <a :href="post.path" class="flex justify-between items-center hover:text-blue-600 transition-colors">
+              <span class="font-medium">{{ post.title }}</span>
+              <span v-if="post.date" class="text-sm text-gray-500">{{ new Date(post.date).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }) }}</span>
+            </a>
           </li>
         </ul>
+      </div>
+
+      <!-- Linux相关标签内容 -->
+      <div v-for="tag in linuxTags" :key="getTagName(tag)" v-if="getTagPostsCount(tag) > 0" class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <h2 :id="getTagName(tag)" class="text-xl font-bold mb-4 flex items-center">
+          <span class="w-3 h-3 rounded-full mr-2" :style="{ backgroundColor: getTagColor(tag) }"></span>
+          {{ getTagName(tag) }}
+          <span class="ml-2 text-sm font-normal text-gray-500">{{ getTagPostsCount(tag) }}篇</span>
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="post in tag.posts" :key="post.path" class="border-b border-gray-100 pb-2 last:border-0">
+            <a :href="post.path" class="flex justify-between items-center hover:text-blue-600 transition-colors">
+              <span class="font-medium">{{ post.title }}</span>
+              <span v-if="post.date" class="text-sm text-gray-500">{{ new Date(post.date).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }) }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 其他标签内容 -->
+      <div v-for="tag in otherValidTags" :key="getTagName(tag)" class="bg-white rounded-lg p-6 shadow-sm border border-gray-200">
+        <h2 :id="getTagName(tag)" class="text-xl font-bold mb-4 flex items-center">
+          <span class="w-3 h-3 rounded-full mr-2" :style="{ backgroundColor: getTagColor(tag) }"></span>
+          {{ getTagName(tag) }}
+          <span class="ml-2 text-sm font-normal text-gray-500">{{ getTagPostsCount(tag) }}篇</span>
+        </h2>
+        <ul class="space-y-3">
+          <li v-for="post in tag.posts" :key="post.path" class="border-b border-gray-100 pb-2 last:border-0">
+            <a :href="post.path" class="flex justify-between items-center hover:text-blue-600 transition-colors">
+              <span class="font-medium">{{ post.title }}</span>
+              <span v-if="post.date" class="text-sm text-gray-500">{{ new Date(post.date).toLocaleDateString('zh-CN', { month: 'short', day: 'numeric' }) }}</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-gray-200 my-8"></div>
+
+    <!-- 没有标签的帖子 -->
+    <div class="mb-8" v-if="tagsStore.postsWithoutTags && tagsStore.postsWithoutTags.length > 0">
+      <h2 class="text-2xl font-bold mb-4">没有标签的帖子</h2>
+      <ul class="bg-white rounded-lg p-6 shadow-sm border border-gray-200 space-y-3">
+        <li v-for="post in tagsStore.postsWithoutTags" :key="post.path" class="border-b border-gray-100 pb-2 last:border-0">
+          <a :href="post.path" class="flex justify-between items-center hover:text-blue-600 transition-colors">
+            <span class="font-medium">{{ post.title }}</span>
+            <span v-if="post.date" class="text-sm text-gray-500">{{ new Date(post.date).toLocaleDateString() }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+
+    <!-- 当没有文章时显示 -->
+    <div v-if="totalArticles === 0" class="text-center py-12">
+      <div class="bg-gray-50 inline-block p-8 rounded-lg">
+        <div class="text-4xl mb-4">📝</div>
+        <h3 class="text-xl font-bold mb-2">还没有文章使用标签</h3>
+        <p class="text-gray-600">使用文章头部的tags字段给您的文章添加标签，它们将自动显示在这里。</p>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
-import { tagsConfig } from '../userConfig/tagsConfig';
+import { computed, onMounted, ref } from 'vue';
+import { useTagsStore } from '../store/useTagsStore';
 
-// 对标签进行排序，确保它们按照一定的顺序显示
-const tags = computed(() => {
-  return Object.keys(tagsConfig).map(tagName => {
-    return {
-      name: tagName,
-      color: tagsConfig[tagName].color || 'blue',
-      posts: tagsConfig[tagName].posts.sort((a, b) => {
-        // 按日期降序排列，最新的在前
-        return new Date(b.date) - new Date(a.date);
-      })
-    };
-  }).sort((a, b) => {
-    // 按文章数量降序排列，数量多的标签在前
-    return b.posts.length - a.posts.length;
+// 使用Pinia标签存储
+const tagsStore = useTagsStore();
+
+// 存储就绪状态
+const isStoreReady = ref(false);
+
+// 测试相关的标签名称
+const testingTagNames = [
+  '软件测试', '测试用例', '项目管理', '方法论',
+  '自动化测试', '性能测试', '接口测试', '测试原则', '测试流程'
+];
+
+// Linux相关的标签名称
+const linuxTagNames = ['linux', 'Linux', 'DevOps'];
+
+// 安全获取有效标签的辅助函数
+function getValidTags(tags) {
+  if (!tags) return [];
+  return tags.filter(tag => {
+    return tag && tag.name && tag.color && tag.posts && Array.isArray(tag.posts);
   });
+}
+
+// 按类别分组标签
+const testingTags = computed(() => {
+  // 首先确保所有标签都是有效的，然后再按名称过滤
+  const validTags = getValidTags(tagsStore.sortedTags);
+  return validTags.filter(tag => testingTagNames.includes(tag.name));
+});
+
+// Linux相关标签
+const linuxTags = computed(() => {
+  const validTags = getValidTags(tagsStore.sortedTags);
+  return validTags.filter(tag => linuxTagNames.includes(tag.name));
+});
+
+// 其他标签，去除测试和Linux标签后的所有标签
+const otherTags = computed(() => {
+  const validTags = getValidTags(tagsStore.sortedTags);
+  return validTags.filter(tag => 
+    !testingTagNames.includes(tag.name) && !linuxTagNames.includes(tag.name));
+});
+
+// 去除空标签后的其他标签
+const otherValidTags = computed(() => {
+  return otherTags.value.filter(tag => getTagPostsCount(tag) > 0);
+});
+
+// 标签统计信息
+// 总标签数目（去除空标签）
+const totalTags = computed(() => {
+  const validTags = getValidTags(tagsStore.sortedTags);
+  return validTags.filter(tag => getTagPostsCount(tag) > 0).length;
+});
+
+// 总文章数目（去重）
+const totalArticles = computed(() => {
+  // 收集所有文章路径
+  const allPaths = new Set();
+  // 只使用有效的标签
+  const validTags = getValidTags(tagsStore.sortedTags);
+  validTags.forEach(tag => {
+    if (tag.posts) {
+      tag.posts.forEach(post => {
+        if (post && post.path) {
+          allPaths.add(post.path);
+        }
+      });
+    }
+  });
+  return allPaths.size;
+});
+
+// 最近更新时间
+const latestUpdateTime = computed(() => {
+  // 手动更改时间排序，找到最新日期
+  let latestDate = '2025-01-01';
+  
+  // 只使用有效的标签
+  const validTags = getValidTags(tagsStore.sortedTags);
+  validTags.forEach(tag => {
+    if (tag.posts) {
+      tag.posts.forEach(post => {
+        if (post && post.date && post.date > latestDate) {
+          latestDate = post.date;
+        }
+      });
+    }
+  });
+  
+  // 格式化日期
+  if (latestDate !== '2025-01-01') {
+    const date = new Date(latestDate);
+    return `${date.getMonth() + 1}月${date.getDate()}日`;
+  }
+  
+  return '-';
+});
+
+// 安全获取标签文章数量的辅助函数
+function getTagPostsCount(tag) {
+  if (!tag) return 0;
+  if (!tag.posts) return 0;
+  return tag.posts.length;
+}
+
+// 安全获取标签颜色的辅助函数
+function getTagColor(tag) {
+  if (!tag) return '#999999';
+  if (!tag.color) return '#999999';
+  return tag.color;
+}
+
+// 安全获取标签名称的辅助函数
+function getTagName(tag) {
+  if (!tag) return 'Unknown';
+  if (!tag.name) return 'Unknown';
+  return tag.name;
+}
+
+// 在组件挂载时初始化标签存储
+onMounted(() => {
+  try {
+    // 初始化标签存储
+    tagsStore.initializeStore();
+    
+    // 稍等一下确保数据准备完毕
+    setTimeout(() => {
+      // 设置状态为就绪
+      isStoreReady.value = true;
+    }, 50);
+  } catch (error) {
+    console.error('初始化标签存储失败:', error);
+    // 即使出错也尝试显示页面
+    isStoreReady.value = true;
+  }
 });
 </script>
 
@@ -59,100 +264,72 @@ const tags = computed(() => {
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-align: center;
+  color: var(--vp-c-brand-1);
 }
 
 .page-desc {
   font-size: 1.2rem;
   color: var(--vp-c-text-2);
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.tags-container {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-.tag-group {
-  border-radius: 8px;
-  padding: 1.5rem;
+.tag-tips {
   background-color: var(--vp-c-bg-soft);
-  transition: transform 0.2s ease;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 2rem;
+  border-left: 4px solid var(--vp-c-brand);
 }
 
-.tag-group:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+.tag-tips h3 {
+  margin-top: 0;
+  color: var(--vp-c-brand-dark);
 }
 
-.tag-title {
-  font-size: 1.5rem;
-  font-weight: 600;
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid var(--vp-c-divider);
+.tag-tips pre {
+  background-color: var(--vp-c-bg);
+  padding: 12px;
+  border-radius: 4px;
 }
 
-.tag-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  margin-right: 8px;
+.tag-blue {
+  background-color: rgb(59, 130, 246);
 }
 
-.tag-blue { background-color: var(--vp-c-brand); }
-.tag-green { background-color: #10b981; }
-.tag-red { background-color: #ef4444; }
-.tag-yellow { background-color: #f59e0b; }
-.tag-purple { background-color: #8b5cf6; }
-.tag-indigo { background-color: #6366f1; }
-.tag-pink { background-color: #ec4899; }
-.tag-sky { background-color: #0ea5e9; }
-
-.tag-count {
-  font-size: 0.9rem;
-  font-weight: 400;
-  color: var(--vp-c-text-2);
-  margin-left: 0.5rem;
+.tag-green {
+  background-color: rgb(34, 197, 94);
 }
 
-.tag-posts {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+.tag-red {
+  background-color: rgb(239, 68, 68);
 }
 
-.tag-post-item {
-  margin-bottom: 0.8rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.5rem 0;
-  border-bottom: 1px dashed var(--vp-c-divider-light);
+.tag-yellow {
+  background-color: rgb(234, 179, 8);
 }
 
-.tag-post-link {
-  color: var(--vp-c-text-1);
-  text-decoration: none;
-  transition: color 0.2s ease;
-  font-weight: 500;
+.tag-purple {
+  background-color: rgb(168, 85, 247);
 }
 
-.tag-post-link:hover {
-  color: var(--vp-c-brand);
+.tag-indigo {
+  background-color: rgb(99, 102, 241);
 }
 
-.tag-post-date {
-  font-size: 0.8rem;
-  color: var(--vp-c-text-3);
+.tag-pink {
+  background-color: rgb(236, 72, 153);
 }
 
-@media (min-width: 768px) {
-  .tags-container {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.tag-sky {
+  background-color: rgb(14, 165, 233);
+}
+
+.tag-orange {
+  background-color: rgb(249, 115, 22);
+}
+
+.tag-teal {
+  background-color: rgb(20, 184, 166);
 }
 </style>

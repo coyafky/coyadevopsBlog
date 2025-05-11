@@ -35,9 +35,12 @@ export default withMermaid(defineConfig({
     nav: [
       { text: "About", link: "/AboutMe.md" },
       { text: "Blogs", link: "/Notes/index" },
-      { text: "知识标签", link: "Tags.md" },
+      { text: "测试学习", link: "/Notes/SoftwareTesting/" },
+      { text: "📝 学习计划", link: "/Notes/SoftwareTesting/TodoList" },
       { text: "Projects", link: "Projects.md" },
-      { text: "智慧与格言", link: "Quotes.md" },
+      { text: "知识标签", link: "Tags.md" },
+      { text: "标签管理", link: "/tags-manager.md" },
+      { text: "Quotes", link: "/Quotes" }
     ],
     // 顶部导航栏左侧的社交平台跳转
     socialLinks: [{ icon: "github", link: "https://github.com/coyafky" }],

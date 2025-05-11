@@ -2,7 +2,7 @@
 title: "linux进程命令"
 outline: deep
 desc: "linux进程命令"
-tags: "Devops"
+tags: "Linux"
 updateTime: "2025-04-23 16:11"
 ---
 

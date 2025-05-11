@@ -2,7 +2,7 @@
 title: "学习linux的背景知识基础整理"
 outline: deep
 desc: "学习linux的背景知识基础整理"
-tags: "Devops"
+tags: "Linux"
 updateTime: "2025-04-22 16:11"
 ---
 

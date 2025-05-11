@@ -58,10 +58,15 @@ const getTitle = (post: Post): string => {
   return "Error Title";
 };
 
-// 获取文章的前两个tag
+// 获取文章的标签
 const getTags = (post: Post) => {
-  const rawTagString: string = post.frontmatter.tags;
-  return rawTagString ? rawTagString.split("/").slice(0, 2) : [];
+  const tag = post.frontmatter.tags;
+  
+  // 如果没有标签，返回空数组
+  if (!tag) return [];
+  
+  // 将单个标签包装入数组返回
+  return [tag];
 };
 
 // 打开文章链接

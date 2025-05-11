@@ -3,6 +3,8 @@
   "devDependencies": {
     "@types/node": "^20.8.8",
     "autoprefixer": "^10.4.15",
+    "chokidar": "^4.0.3",
+    "gray-matter": "^4.0.3",
     "markdown-it-mathjax3": "^4.3.2",
     "medium-zoom": "^1.1.0",
     "mermaid": "^11.6.0",
@@ -11,8 +13,11 @@
     "vitepress-plugin-mermaid": "^2.0.17"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "generate-tags": "node docs/.vitepress/scripts/generateTags.js",
+    "watch-tags": "node docs/.vitepress/scripts/generateTags.js --watch",
+    "docs:dev": "npm run generate-tags && vitepress dev docs",
+    "docs:dev:watch": "npm run watch-tags & vitepress dev docs",
+    "docs:build": "npm run generate-tags && vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "postcss": {
@@ -22,7 +27,8 @@
     }
   },
   "dependencies": {
+    "@vueuse/core": "^13.1.0",
     "dayjs": "^1.11.9",
-    "gray-matter": "^4.0.3"
+    "pinia": "^3.0.2"
   }
 }
