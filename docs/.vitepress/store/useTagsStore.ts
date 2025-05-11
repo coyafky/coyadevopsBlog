@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 import { useData } from 'vitepress';
-import { tagsConfig } from '../userConfig/tagsConfig';
+import { tagsConfig } from '../userConfig/tagsConfig.js';
 
 interface Post {
   title: string;
@@ -69,31 +69,7 @@ export const useTagsStore = defineStore('tags', () => {
   // 从VitePress获取当前页面数据
   const { frontmatter, page } = useData();
   
-  /**
-   * 初始化标签存储，从frontmatter和URL中解析标签
-   */
-  function initializeStore() {
-    // 首先确保所有tagsConfig中的标签都有正确的属性
-    Object.keys(tagsConfig).forEach(tagName => {
-      if (!tagsMap.value[tagName]) {
-        tagsMap.value[tagName] = {
-          color: getTagColor(tagName),
-          posts: []
-        };
-      } else if (!tagsMap.value[tagName].posts) {
-        tagsMap.value[tagName].posts = [];
-      }
-    });
-    
-    // 如果当前页面是 Markdown 页面并且有 frontmatter
-    if (page.value && frontmatter.value && !processedPaths.value.has(page.value.filePath)) {
-      processFrontmatter();
-    }
-  }
-  
-  /**
-   * 处理当前页面的 frontmatter 数据
-   */
+
   function processFrontmatter() {
     if (!page.value) return;
     

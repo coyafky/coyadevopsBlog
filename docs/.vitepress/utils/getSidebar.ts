@@ -47,7 +47,7 @@ function generate(notesRootPath: string, pagePath: string, prefix = "", depth = 
     if (stats.isDirectory()) {
       const childItems = generate(notesRootPath, file, relDir, depth + 1);
       // 剔除不包含 md 文件的目录
-      if (childItems[0].items!.length === 0) continue;
+      if (!childItems || !childItems.length || !childItems[0] || !childItems[0].items || childItems[0].items.length === 0) continue;
       sidebarSection.items!.push(...childItems);
     }
     // 对于文件
@@ -99,10 +99,19 @@ function generate(notesRootPath: string, pagePath: string, prefix = "", depth = 
 export function getSidebar(notesRootPath: string, pagePath: string) {
   // 确保生成的边栏配置有效
   try {
+    // 检查参数有效性
+    if (!notesRootPath || !pagePath) {
+      console.warn('getSidebar调用时缺少必要参数');
+      return {
+        text: pagePath || 'Unknown',
+        items: [],
+      };
+    }
+
     const sidebarConfig = generate(notesRootPath, pagePath);
     
     // 如果生成的配置为空或无效，返回一个默认边栏
-    if (!sidebarConfig || !sidebarConfig[0]) {
+    if (!sidebarConfig || !sidebarConfig.length || !sidebarConfig[0]) {
       return {
         text: pagePath,
         items: [],
@@ -110,7 +119,7 @@ export function getSidebar(notesRootPath: string, pagePath: string) {
     }
     
     return {
-      text: sidebarConfig[0].text,
+      text: sidebarConfig[0].text || pagePath,
       items: sidebarConfig[0].items || [],
     };
   } catch (error) {
