@@ -15,6 +15,36 @@ export const tagsConfig: Record<string, TagConfig> = {
     color: "purple",
     posts: [
       {
+        title: "自动化测试",
+        path: "/Notes/SoftwareTesting/自动化测试",
+        date: "2025-05-12"
+      },
+      {
+        title: "软件测试技术-条件覆盖法（白盒）",
+        path: "/Notes/SoftwareTesting/软件测试技术-条件覆盖法（白盒）",
+        date: "2025-05-12"
+      },
+      {
+        title: "软件测试技术-语句覆盖法（白盒）",
+        path: "/Notes/SoftwareTesting/软件测试技术-语句覆盖法（白盒)",
+        date: "2025-05-12"
+      },
+      {
+        title: "软件测试技术-路径覆盖法（白盒）",
+        path: "/Notes/SoftwareTesting/软件测试技术-路径覆盖法（白盒）",
+        date: "2025-05-12"
+      },
+      {
+        title: "软件测试技术-判定/条件覆盖法（白盒）",
+        path: "/Notes/SoftwareTesting/软件测试技术判定条件覆盖法(白盒)",
+        date: "2025-05-12"
+      },
+      {
+        title: "软件测试技术-条件组合覆盖（白盒）",
+        path: "/Notes/SoftwareTesting/软件测试技术条件组合覆盖法（白盒）",
+        date: "2025-05-12"
+      },
+      {
         title: "兼容性测试",
         path: "/Notes/SoftwareTesting/兼容性测试",
         date: "2025-05-11"
@@ -173,7 +203,42 @@ export const tagsConfig: Record<string, TagConfig> = {
       {
         title: "5why方法论读书",
         path: "/Notes/BookNote/5W分析法优质的方法论",
-        date: "2025-05-11"
+        date: "2025-05-18"
+      },
+      {
+        title: "5why方法论读书",
+        path: "/Notes/BookNote/STAR法则",
+        date: "2025-05-18"
+      },
+    ]
+  },
+  "Algorithm": {
+    color: "indigo",
+    posts: [
+      {
+        title: "Stack",
+        path: "/Notes/CSNote/Stack栈",
+        date: "2025-05-15 14:11"
+      },
+      {
+        title: "排序算法",
+        path: "/Notes/CSNote/排序算法",
+        date: "2025-05-15 14:11"
+      },
+      {
+        title: "查找算法",
+        path: "/Notes/CSNote/查找算法",
+        date: "2025-05-15 14:11"
+      },
+      {
+        title: "贪心算法",
+        path: "/Notes/CSNote/贪心算法",
+        date: "2025-05-15 14:11"
+      },
+      {
+        title: "链表",
+        path: "/Notes/CSNote/链表",
+        date: "2025-05-15 14:11"
       },
     ]
   },
@@ -247,6 +312,36 @@ export const tagsConfig: Record<string, TagConfig> = {
       },
     ]
   },
+  "Network": {
+    color: "pink",
+    posts: [
+      {
+        title: "DNS",
+        path: "/Notes/Network/DNS",
+        date: "2025-05-14 14:11"
+      },
+      {
+        title: "HTTP 报文的结构",
+        path: "/Notes/Network/HTTP 报文的结构",
+        date: "2025-05-14 14:11"
+      },
+      {
+        title: "TCP和UDP",
+        path: "/Notes/Network/TCP和UDP",
+        date: "2025-05-14 14:11"
+      },
+      {
+        title: "Cookie",
+        path: "/Notes/Network/cookie",
+        date: "2025-05-14 14:11"
+      },
+      {
+        title: "WebSocket",
+        path: "/Notes/Network/webScoket",
+        date: "2025-05-14 14:11"
+      },
+    ]
+  },
   "CSNote": {
     color: "pink",
     posts: [
@@ -287,9 +382,94 @@ export const tagsConfig: Record<string, TagConfig> = {
       },
     ]
   },
+  "PythonAndJavascript": {
+    color: "yellow",
+    posts: [
+      {
+        title: "Python Lambda 与 JavaScript 箭头函数：深度对比",
+        path: "/Notes/PythonAndJavascript/lambda-vs-arrow-functions",
+        date: "2025-05-16 17:00"
+      },
+      {
+        title: "Python与JavaScript的数据结构",
+        path: "/Notes/PythonAndJavascript/python和JavaScript的数据结构",
+        date: "2025-05-16 14:00"
+      },
+      {
+        title: "map",
+        path: "/Notes/PythonAndJavascript/map",
+        date: "2025-05-16 12:00"
+      },
+      {
+        title: "filter",
+        path: "/Notes/PythonAndJavascript/filter",
+        date: "2025-05-16 11:00"
+      },
+      {
+        title: "Python 装饰器",
+        path: "/Notes/PythonAndJavascript/python装饰器",
+        date: "2025-05-16 10:00"
+      },
+      {
+        title: "reduce",
+        path: "/Notes/PythonAndJavascript/reduce",
+        date: "2025-5-15 18:56"
+      },
+      {
+        title: "函数是第一公民",
+        path: "/Notes/PythonAndJavascript/函数是第一公民",
+        date: "2025-5-15 17:56"
+      },
+      {
+        title: "深拷贝和浅拷贝",
+        path: "/Notes/PythonAndJavascript/深拷贝和浅拷贝",
+        date: "2025-5-15 17:56"
+      },
+      {
+        title: "闭包",
+        path: "/Notes/PythonAndJavascript/闭包",
+        date: "2025-5-15 17:56"
+      },
+      {
+        title: "三元表达式",
+        path: "/Notes/PythonAndJavascript/三元表达式",
+        date: "2025-5-15 16:56"
+      },
+      {
+        title: "Python和Javascript的内存管理",
+        path: "/Notes/PythonAndJavascript/内存管理",
+        date: "2025-5-15 15:56"
+      },
+      {
+        title: "值比较和内存地址比较",
+        path: "/Notes/PythonAndJavascript/值比较和内存地址比较",
+        date: "2025-5-15 14:56"
+      },
+    ]
+  },
+  "Python, JavaScript, OOP, ObjectOrientedProgramming": {
+    color: "purple",
+    posts: [
+      {
+        title: "面向对象编程 (OOP)",
+        path: "/Notes/PythonAndJavascript/面向对象",
+        date: "2025-05-16 15:00"
+      },
+    ]
+  },
   "SoftwareTesting": {
     color: "sky",
     posts: [
+      {
+        title: "Postman接口测试",
+        path: "/Notes/SoftwareTesting/Postman接口测试",
+        date: "2025-5-14 14:56"
+      },
+      {
+        title: "Pytest",
+        path: "/Notes/SoftwareTesting/pytest",
+        date: "2025-5-14 14:56"
+      },
       {
         title: "软件本地化和国际化测试",
         path: "/Notes/SoftwareTesting/本地化和国际化测试",
@@ -324,11 +504,6 @@ export const tagsConfig: Record<string, TagConfig> = {
         title: "缺陷管理",
         path: "/Notes/SoftwareTesting/缺陷管理",
         date: "2025-4-24 14:56"
-      },
-      {
-        title: "测试的相关概念",
-        path: "/Notes/SoftwareTesting/什么是测试用例",
-        date: "2023-10-24 14:56"
       },
       {
         title: "用例设计的方法",
