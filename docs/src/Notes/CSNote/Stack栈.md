@@ -18,11 +18,10 @@ updateTime: "2025-05-15 14:11"
 - 将一个元素推入堆栈就像在顶部添加一个新盘子。
 - 弹出一个元素将从堆栈中删除顶板。
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/38a4d900-0bda-48fe-aee1-9de1e1521853/e74b2ac0-0c73-4816-84fe-71b1b349497c/image.png)
+
 
 堆栈遵循 LIFO（后进先出）原则，因此最后入栈的元素将首先弹出。
 
-![image.png](https://prod-files-secure.s3.us-west-2.amazonaws.com/38a4d900-0bda-48fe-aee1-9de1e1521853/3d5da8e6-ec8a-43cc-b296-7ff4997e5104/image.png)
 
 # Types of Stack: 堆栈类型：
 
