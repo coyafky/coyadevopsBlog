@@ -15,6 +15,16 @@ export const tagsConfig: Record<string, TagConfig> = {
     color: "purple",
     posts: [
       {
+        title: "冒烟测试",
+        path: "/Notes/SoftwareTesting/冒烟测试",
+        date: "2025-05-21"
+      },
+      {
+        title: "软件测试基础概念和软件测试分类",
+        path: "/Notes/SoftwareTesting/软件测试基础概念和软件测试分类",
+        date: "2025-05-20"
+      },
+      {
         title: "自动化测试",
         path: "/Notes/SoftwareTesting/自动化测试",
         date: "2025-05-12"
@@ -135,28 +145,8 @@ export const tagsConfig: Record<string, TagConfig> = {
         date: "2025-05-03"
       },
       {
-        title: "软件测试技术-决策表法",
-        path: "/Notes/SoftwareTesting/软件测试技术-决策表法",
-        date: "2025-05-03"
-      },
-      {
         title: "软件测试技术-因果图法",
         path: "/Notes/SoftwareTesting/软件测试技术-因果图法",
-        date: "2025-05-03"
-      },
-      {
-        title: "软件测试技术-场景法",
-        path: "/Notes/SoftwareTesting/软件测试技术-场景法",
-        date: "2025-05-03"
-      },
-      {
-        title: "软件测试技术-等价类划分法",
-        path: "/Notes/SoftwareTesting/软件测试技术-等价类划分法",
-        date: "2025-05-03"
-      },
-      {
-        title: "软件测试技术-边界值分析法",
-        path: "/Notes/SoftwareTesting/软件测试技术-边界值分析法",
         date: "2025-05-03"
       },
       {
@@ -203,12 +193,12 @@ export const tagsConfig: Record<string, TagConfig> = {
       {
         title: "5why方法论读书",
         path: "/Notes/BookNote/5W分析法优质的方法论",
-        date: "2025-05-18"
+        date: "2025-05-26"
       },
       {
-        title: "5why方法论读书",
+        title: "STAR法则",
         path: "/Notes/BookNote/STAR法则",
-        date: "2025-05-18"
+        date: "2025-05-26"
       },
     ]
   },
@@ -223,11 +213,6 @@ export const tagsConfig: Record<string, TagConfig> = {
       {
         title: "排序算法",
         path: "/Notes/CSNote/排序算法",
-        date: "2025-05-15 14:11"
-      },
-      {
-        title: "查找算法",
-        path: "/Notes/CSNote/查找算法",
         date: "2025-05-15 14:11"
       },
       {
@@ -259,11 +244,6 @@ export const tagsConfig: Record<string, TagConfig> = {
         title: "linux的磁盘管理",
         path: "/Notes/LinuxNote/linux的磁盘管理",
         date: "2025-04-24 16:11"
-      },
-      {
-        title: "linux中的网络管理",
-        path: "/Notes/LinuxNote/linux中的网络管理",
-        date: "2025-04-23 16:33"
       },
       {
         title: "linux文件目录管理",
@@ -376,6 +356,11 @@ export const tagsConfig: Record<string, TagConfig> = {
     color: "sky",
     posts: [
       {
+        title: "AAbus项目测试",
+        path: "/Notes/Projects/AAbus项目测试",
+        date: "2025-04-25 16:11"
+      },
+      {
         title: "基于Vue3的家教推荐系统的项目演示",
         path: "/Notes/Projects/基于Vue3的家教推荐系统的项目演示",
         date: "2025-04-25 16:11"
@@ -457,9 +442,69 @@ export const tagsConfig: Record<string, TagConfig> = {
       },
     ]
   },
+  "Python的数据结构": {
+    color: "green",
+    posts: [
+      {
+        title: "python错误和异常",
+        path: "/Notes/PythonBaisc/python错误和异常",
+        date: "2025-5-23 14:46"
+      },
+      {
+        title: "python数据类型",
+        path: "/Notes/PythonBaisc/pytgon数据类型",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python函数",
+        path: "/Notes/PythonBaisc/python函数",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python列表和元祖",
+        path: "/Notes/PythonBaisc/python列表和元祖",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python基础知识",
+        path: "/Notes/PythonBaisc/python基础知识",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python字典和集合",
+        path: "/Notes/PythonBaisc/python字典和集合",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python序列",
+        path: "/Notes/PythonBaisc/python序列",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python文件对象",
+        path: "/Notes/PythonBaisc/python文件对象",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python条件和循环",
+        path: "/Notes/PythonBaisc/python条件和循环",
+        date: "2025-5-12 14:56"
+      },
+      {
+        title: "python模块",
+        path: "/Notes/PythonBaisc/python模块",
+        date: "2025-5-12 14:56"
+      },
+    ]
+  },
   "SoftwareTesting": {
     color: "sky",
     posts: [
+      {
+        title: "软件测试相关流程和测试用例和文档编写规范",
+        path: "/Notes/SoftwareTesting/软件测试相关流程和测试用例和文档编写规范",
+        date: "2025-5-20 1:56"
+      },
       {
         title: "Postman接口测试",
         path: "/Notes/SoftwareTesting/Postman接口测试",
@@ -486,11 +531,6 @@ export const tagsConfig: Record<string, TagConfig> = {
         date: "2025-5-7 14:56"
       },
       {
-        title: "软件测试理论-用例设计",
-        path: "/Notes/SoftwareTesting/软件测试理论-用例设计",
-        date: "2025-5-7 1:56"
-      },
-      {
         title: "软件测试的bug",
         path: "/Notes/SoftwareTesting/Bug的全部",
         date: "2025-5-4 14:56"
@@ -504,11 +544,6 @@ export const tagsConfig: Record<string, TagConfig> = {
         title: "缺陷管理",
         path: "/Notes/SoftwareTesting/缺陷管理",
         date: "2025-4-24 14:56"
-      },
-      {
-        title: "用例设计的方法",
-        path: "/Notes/SoftwareTesting/用例的设计的方法",
-        date: "2023-10-24 14:56"
       },
     ]
   },

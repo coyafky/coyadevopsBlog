@@ -1,5 +1,5 @@
 ---
-title: "5why方法论读书"
+title: "STAR法则"
 outline: deep
 desc: ""
 tags: "BookNote"
